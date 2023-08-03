@@ -14003,21 +14003,26 @@ $$ \Large  \begin{cases}
 $$  \large \begin{align*}
         \frac{\mathrm{DMG_{crit}^{_{\%}}}}{\mathrm{Rate_{crit}^{_{\%}}}} = \frac{64.80\%}{32.40\%} = 2
         \quad\implies\quad  \mathrm{DMG_{crit}^{_{\%}}} = 2 \times \mathrm{Rate_{crit}^{_{\%}}}
-    \end{align*}$$$$  \large \begin{align*}
-        \text{Isolating } \mathrm{Rate_{crit}^{_{\%}}} \text{ we have:} \qquad \mathrm{Rate_{crit}^{_{\%}}} &amp;= \frac{1}{2} \times \mathrm{DMG_{crit}^{_{\%}}}
-    \end{align*}$$<p>(4) divided by (2):</p>
+    \end{align*}$$<p>(2) divided by (4):</p>
 $$  \large \begin{align*}
-        \frac{\left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right) \times \mathrm{Rate_{crit}^{_{\%}}}}{1 + \mathrm{Rate_{crit}^{_{\%}}} \times \mathrm{DMG_{crit}^{_{\%}}}} = \frac{38.88\%}{64.80\%} = \frac{3}{5}
-        \quad\implies\quad 5 \times \left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right) = 3 \times \left( \frac{1}{\mathrm{Rate_{crit}^{_{\%}}}} + \mathrm{DMG_{crit}^{_{\%}}} \right)
-    \end{align*}$$$$  \large \begin{align*}
-        \text{Isolating } \mathrm{DMG_{bonus}^{_{\%}}} \text{ we have:} \qquad \mathrm{DMG_{bonus}^{_{\%}}} &amp;= \frac{3}{5} \times \left( \frac{1}{\mathrm{Rate_{crit}^{_{\%}}}} + \mathrm{DMG_{crit}^{_{\%}}} \right) - 1
+        \frac{1 + \mathrm{Rate_{crit}^{_{\%}}} \times \mathrm{DMG_{crit}^{_{\%}}}}{\left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right) \times \mathrm{Rate_{crit}^{_{\%}}}} = \frac{64.80\%}{38.88\%} = \frac{5}{3}
+        \quad\implies\quad 3 \times \left( \frac{1}{\mathrm{Rate_{crit}^{_{\%}}}} + \mathrm{DMG_{crit}^{_{\%}}} \right) = 5 \times \left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right)
+    \end{align*}$$<p>(1) divided by (4):</p>
+$$  \large \begin{align*}
+        \frac{\mathrm{ATK_{base}} \times \left( 1 + \mathrm{Rate_{crit}^{_{\%}}} \times \mathrm{DMG_{crit}^{_{\%}}} \right)}
+             {\left[ \mathrm{ATK_{base}} \times \left( 1 + \mathrm{ATK_{bonus}^{_{\%}}} \right) + \mathrm{ATK_{flat}} \right] \times \mathrm{Rate_{crit}^{_{\%}}}} = \frac{64.80\%}{43.20\%} = \frac{3}{2}
+        \quad\implies\quad 2 \times \left( \frac{1}{\mathrm{Rate_{crit}^{_{\%}}}} + \mathrm{DMG_{crit}^{_{\%}}} \right) = 3 \times \left( 1 + \mathrm{ATK_{bonus}^{_{\%}}} + \frac{\mathrm{ATK_{flat}}}{\mathrm{ATK_{base}}} \right)
     \end{align*}$$<p>(2) divided by (1):</p>
 $$  \large \begin{align*}
         \frac{\mathrm{ATK_{base}} \times \left( 1 + \mathrm{ATK_{bonus}^{_{\%}}} \right) + \mathrm{ATK_{flat}}}{\mathrm{ATK_{base}} \times \left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right)} = \frac{43.20\%}{38.88\%} = \frac{10}{9}
         \quad\implies\quad 9 \times \left( 1 + \mathrm{ATK_{bonus}^{_{\%}}} + \frac{\mathrm{ATK_{flat}}}{\mathrm{ATK_{base}}} \right) = 10 \times \left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right)
-    \end{align*}$$$$  \large \begin{align*}
-        \text{Isolating } \mathrm{ATK_{bonus}^{_{\%}}} \text{ we have:} \qquad \mathrm{ATK_{bonus}^{_{\%}}} &amp;= \frac{10}{9} \times \left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right) - 1 - \frac{\mathrm{ATK_{flat}}}{\mathrm{ATK_{base}}}
-    \end{align*}$$
+    \end{align*}$$<p>Therefore, the optimal balance between ATK vs DMG vs CRIT is given by:</p>
+$$  \large \begin{align*}
+        \underbrace{9 \times \left( 1 + \mathrm{ATK_{bonus}^{_{\%}}} + \frac{\mathrm{ATK_{flat}}}{\mathrm{ATK_{base}}} \right)}_{\text{ATK Score}} =
+        \underbrace{10 \times \left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right)}_{\text{DMG Score}} =
+        \underbrace{6 \times \left( \frac{1}{\mathrm{Rate_{crit}^{_{\%}}}} + \mathrm{DMG_{crit}^{_{\%}}} \right)}_{\text{CRIT Score}}
+    \end{align*}$$<p>Your lowest score indicates the attribute you are most starved for.</p>
+
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -14031,10 +14036,10 @@ $$  \large \begin{align*}
 <span class="n">flat_ATK</span> <span class="o">=</span> <span class="mf">352.8</span>
 <span class="n">base_ATK</span> <span class="o">=</span> <span class="mi">1200</span>
 
-<span class="n">crit_DMG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>                     <span class="c1"># Consider values of CRIT DAMAGE from 50% to 300%.</span>
-<span class="n">crit_Rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">crit_DMG</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>                    <span class="c1"># From CRIT DAMAGE, compute optimal CRIT RATE (constraining it to 100%).</span>
-<span class="n">bonus_DMG</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">crit_DMG</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">crit_Rate</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>             <span class="c1"># From CRIT DAMAGE and CRIT RATE, compute optimal BONUS DAMAGE.</span>
-<span class="n">bonus_ATK</span> <span class="o">=</span> <span class="mi">10</span><span class="o">/</span><span class="mi">9</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">bonus_DMG</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">flat_ATK</span><span class="o">/</span><span class="n">base_ATK</span> <span class="c1"># From BONUS DAMAGE, compute optimal BONUS ATTACK.</span>
+<span class="n">crit_DMG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>                                <span class="c1"># Consider values of CRIT DAMAGE from 50% to 300%.</span>
+<span class="n">crit_Rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">crit_DMG</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>                               <span class="c1"># From CRIT DAMAGE, compute optimal CRIT RATE (constraining it to 100%).</span>
+<span class="n">bonus_DMG</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">crit_DMG</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">crit_Rate</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>                        <span class="c1"># From CRIT DAMAGE and CRIT RATE, compute optimal BONUS DAMAGE.</span>
+<span class="n">bonus_ATK</span> <span class="o">=</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">crit_DMG</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">crit_Rate</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">flat_ATK</span><span class="o">/</span><span class="n">base_ATK</span>    <span class="c1"># From CRIT DAMAGE and CRIT RATE, compute optimal BONUS ATTACK.</span>
 
 <span class="n">out_DMG</span> <span class="o">=</span> <span class="p">(</span><span class="n">base_ATK</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">bonus_ATK</span><span class="p">)</span> <span class="o">+</span> <span class="n">flat_ATK</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">bonus_DMG</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">crit_Rate</span> <span class="o">*</span> <span class="n">crit_DMG</span><span class="p">)</span>
 <span class="n">cost</span> <span class="o">=</span> <span class="n">bonus_ATK</span><span class="o">/</span><span class="mf">0.4320</span> <span class="o">+</span> <span class="n">bonus_DMG</span><span class="o">/</span><span class="mf">0.3888</span> <span class="o">+</span> <span class="n">crit_Rate</span><span class="o">/</span><span class="mf">0.3240</span> <span class="o">+</span> <span class="n">crit_DMG</span><span class="o">/</span><span class="mf">0.6480</span>
