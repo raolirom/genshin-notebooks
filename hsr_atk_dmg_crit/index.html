@@ -13971,6 +13971,18 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>TLDR</strong></p>
+<p>Taking into account all possible bonus sources (relics, light cone, traces, ally buffs etc), calculate the following 3 measurements:</p>
+$$  \large \begin{align*}
+        \text{ATK Score} &amp;= 9 \times \left( 1 + \mathrm{ATK_{bonus}^{_{\%}}} + \frac{\mathrm{ATK_{flat}}}{\mathrm{ATK_{base}}} \right) =
+        \underbrace{9 \times \left( 1 + \frac{\text{ATK Blue Number}}{\text{ATK Black Number}} \right)}_{\text{When there are no external ATK buffs}} \\
+        \text{DMG Score} &amp;= 10 \times \left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right) \\ \\
+        \text{CRIT Score} &amp;= 6 \times \left( \frac{1}{\mathrm{Rate_{crit}^{_{\%}}}} + \mathrm{DMG_{crit}^{_{\%}}} \right)
+    \end{align*}$$<p>The optimal balance between ATK vs DMG vs CRIT is achieved when ATK Score = DMG Score = CRIT Score.
+When not equal, your lowest score indicates the attribute you are most starved for.
+Try to "migrate" relic rolls from your highest score into your lowest score.</p>
+<hr>
+<p><strong>Mathematical Proof</strong></p>
 <p>Damage formula:</p>
 $$  \large \begin{align*}
         \mathrm{DMG_{out}} = \left[ \mathrm{ATK_{base}} \times \left( 1 + \mathrm{ATK_{bonus}^{_{\%}}} \right) + \mathrm{ATK_{flat}} \right]
@@ -14021,8 +14033,7 @@ $$  \large \begin{align*}
         \underbrace{9 \times \left( 1 + \mathrm{ATK_{bonus}^{_{\%}}} + \frac{\mathrm{ATK_{flat}}}{\mathrm{ATK_{base}}} \right)}_{\text{ATK Score}} =
         \underbrace{10 \times \left( 1 + \mathrm{DMG_{bonus}^{_{\%}}} \right)}_{\text{DMG Score}} =
         \underbrace{6 \times \left( \frac{1}{\mathrm{Rate_{crit}^{_{\%}}}} + \mathrm{DMG_{crit}^{_{\%}}} \right)}_{\text{CRIT Score}}
-    \end{align*}$$<p>Your lowest score indicates the attribute you are most starved for.</p>
-
+    \end{align*}$$
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
